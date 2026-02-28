@@ -82,9 +82,9 @@ export default function About() {
                 <Award className="text-primary" size={20} /> Achievements
               </h3>
               <ul className="space-y-3 text-sm text-slate-600 dark:text-slate-400">
-                <li className="flex gap-2">• Cleared CGL 2020 with All India Rank</li>
-                <li className="flex gap-2">• 100k+ Subscribers on YouTube</li>
-                <li className="flex gap-2">• Helped 5000+ students clear Tier 1</li>
+                <li className="flex gap-2">• Cleared SSC CGL 2024 & 2025</li>
+                <li className="flex gap-2">• Just started YouTube Journey</li>
+                <li className="flex gap-2">• Helped 500+ students achieve their goals</li>
               </ul>
             </div>
           </aside>
