@@ -94,15 +94,21 @@ export const youtubeService = {
     return [
       {
         id: "1",
-        title: "SSC CGL Maths Strategy 2024",
-        thumbnail: "https://picsum.photos/seed/maths/400/225",
-        url: "https://youtube.com/watch?v=example1"
+        title: "SSC CGL 2024 Maths Strategy | How to Score 50/50",
+        thumbnail: "https://picsum.photos/seed/maths1/400/225",
+        url: "https://www.youtube.com/watch?v=example1"
       },
       {
         id: "2",
-        title: "Reasoning Masterclass: Syllogism",
-        thumbnail: "https://picsum.photos/seed/reasoning/400/225",
-        url: "https://youtube.com/watch?v=example2"
+        title: "Reasoning Masterclass: Syllogism & Logical Venn Diagrams",
+        thumbnail: "https://picsum.photos/seed/reasoning1/400/225",
+        url: "https://www.youtube.com/watch?v=example2"
+      },
+      {
+        id: "3",
+        title: "SSC CGL 2025: Complete Roadmap for Beginners",
+        thumbnail: "https://picsum.photos/seed/roadmap/400/225",
+        url: "https://www.youtube.com/watch?v=example3"
       }
     ];
   }

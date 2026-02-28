@@ -28,7 +28,7 @@ export default function YouTube() {
           </p>
         </div>
         <a 
-          href="https://youtube.com/example" 
+          href="https://www.youtube.com/@sagaciouscgl" 
           target="_blank" 
           rel="noreferrer" 
           className="btn-primary bg-red-600 hover:bg-red-700 flex items-center gap-2"

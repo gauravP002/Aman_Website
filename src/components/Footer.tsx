@@ -21,7 +21,7 @@ export default function Footer() {
               Join our community to stay updated with the latest study materials and exam strategies.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
+              <a href="https://www.youtube.com/@sagaciouscgl" target="_blank" rel="noreferrer" className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">
                 <Youtube size={20} />
               </a>
               <a href="#" className="p-2 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors">

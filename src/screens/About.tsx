@@ -4,10 +4,11 @@ import { Target, Compass, Award, BookOpen } from 'lucide-react';
 
 export default function About() {
   const journey = [
-    { year: '2018', event: 'Started SSC Preparation while in college.' },
-    { year: '2020', event: 'Cleared SSC CGL with top rank.' },
-    { year: '2021', event: 'Joined as an SSC Job Holder.' },
-    { year: '2022', event: 'Launched YouTube channel to help aspirants.' },
+    { year: '2022', event: 'Completed graduation from BSC Mathematics and cleared Airforce exam in the same year.' },
+    { year: '2023', event: 'Cleared multiple exams: MP Police, SSC GD, SSC CPO, and SSC MTS.' },
+    { year: '2024', event: 'Successfully cleared SSC CGL Pre and Mains exams.' },
+    { year: '2025', event: 'Cleared SSC CGL, SSC CHSL, IB (Intelligence Bureau), and UP Police exams.' },
+    { year: '2026', event: 'Continuing the journey of excellence and helping others achieve their dreams.' },
   ];
 
   return (

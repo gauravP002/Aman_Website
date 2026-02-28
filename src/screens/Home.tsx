@@ -43,7 +43,7 @@ export default function Home() {
                 <a href="https://t.me/example" target="_blank" rel="noreferrer" className="btn-primary flex items-center justify-center gap-2">
                   <Send size={20} /> Join Telegram Community
                 </a>
-                <a href="https://youtube.com/example" target="_blank" rel="noreferrer" className="btn-secondary flex items-center justify-center gap-2">
+                <a href="https://www.youtube.com/@sagaciouscgl" target="_blank" rel="noreferrer" className="btn-secondary flex items-center justify-center gap-2">
                   <Youtube size={20} /> Subscribe on YouTube
                 </a>
               </div>
