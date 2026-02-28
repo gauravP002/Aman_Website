@@ -1,44 +1,97 @@
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Lazy initialization for Gemini to avoid "API Key must be set" error on load
+let genAI: GoogleGenAI | null = null;
+export function getGemini() {
+  if (!genAI) {
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
+      console.warn("GEMINI_API_KEY is not set. AI features will be disabled.");
+      return null;
+    }
+    genAI = new GoogleGenAI({ apiKey });
+  }
+  return genAI;
+}
+
+// Helper for LocalStorage fallback (for Static Site deployment)
+const getStorageData = (key: string) => {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : null;
+};
+
+const setStorageData = (key: string, data: any) => {
+  localStorage.setItem(key, JSON.stringify(data));
+};
 
 export const blogService = {
   async getAll() {
-    const res = await fetch("/api/blogs");
-    return res.json();
+    try {
+      const res = await fetch("/api/blogs");
+      if (!res.ok) throw new Error("Backend not available");
+      return await res.json();
+    } catch (err) {
+      // Fallback to localStorage for Static Site deployment
+      return getStorageData("blogs") || [];
+    }
   },
   async create(blog: any) {
-    const res = await fetch("/api/blogs", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(blog),
-    });
-    return res.json();
+    try {
+      const res = await fetch("/api/blogs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(blog),
+      });
+      if (!res.ok) throw new Error("Backend not available");
+      return await res.json();
+    } catch (err) {
+      const blogs = getStorageData("blogs") || [];
+      const newBlog = { ...blog, id: Date.now(), created_at: new Date().toISOString() };
+      setStorageData("blogs", [...blogs, newBlog]);
+      return newBlog;
+    }
   },
   async delete(id: number) {
-    await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+    try {
+      const res = await fetch(`/api/blogs/${id}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Backend not available");
+    } catch (err) {
+      const blogs = getStorageData("blogs") || [];
+      setStorageData("blogs", blogs.filter((b: any) => b.id !== id));
+    }
   }
 };
 
 export const materialService = {
   async getAll() {
-    const res = await fetch("/api/materials");
-    return res.json();
+    try {
+      const res = await fetch("/api/materials");
+      if (!res.ok) throw new Error("Backend not available");
+      return await res.json();
+    } catch (err) {
+      return getStorageData("materials") || [];
+    }
   },
   async create(material: any) {
-    const res = await fetch("/api/materials", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(material),
-    });
-    return res.json();
+    try {
+      const res = await fetch("/api/materials", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(material),
+      });
+      if (!res.ok) throw new Error("Backend not available");
+      return await res.json();
+    } catch (err) {
+      const materials = getStorageData("materials") || [];
+      const newMaterial = { ...material, id: Date.now(), created_at: new Date().toISOString() };
+      setStorageData("materials", [...materials, newMaterial]);
+      return newMaterial;
+    }
   }
 };
 
-// Mock YouTube Service (Real integration would require YOUTUBE_API_KEY)
 export const youtubeService = {
   async getLatestVideos() {
-    // In a real app, you'd fetch from YouTube API
     return [
       {
         id: "1",
