@@ -1,14 +1,13 @@
-import { GoogleGenAI } from "@google/genai";
-
 // Lazy initialization for Gemini to avoid "API Key must be set" error on load
-let genAI: GoogleGenAI | null = null;
-export function getGemini() {
+let genAI: any = null;
+export async function getGemini() {
   if (!genAI) {
     const apiKey = process.env.GEMINI_API_KEY;
     if (!apiKey) {
       console.warn("GEMINI_API_KEY is not set. AI features will be disabled.");
       return null;
     }
+    const { GoogleGenAI } = await import("@google/genai");
     genAI = new GoogleGenAI({ apiKey });
   }
   return genAI;
